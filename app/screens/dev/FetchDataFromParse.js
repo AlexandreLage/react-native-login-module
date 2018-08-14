@@ -1,5 +1,16 @@
 import React from "react";
-import { FlatList, View, Text, Button, AsyncStorage } from "react-native";
+import { FlatList, View, AsyncStorage } from "react-native";
+import {
+  Content,
+  Button,
+  Text,
+  List,
+  ListItem,
+  Icon,
+  Right,
+  Left,
+  Body
+} from "native-base";
 
 // In React Native applications
 import Parse from "parse/react-native";
@@ -228,48 +239,69 @@ export default class FetchDataFromParseScreen extends React.Component {
 
     return (
       <View style={{ flex: 1 }}>
-        <View style={{ justifyContent: "center", padding: 20 }}>
-          <Text style={{ textAlign: "center", marginTop: 40 }}>
+        <View
+          style={{
+            justifyContent: "center",
+            alignItems: "center",
+            padding: 20
+          }}
+        >
+          <Text style={{ textAlign: "center", marginTop: 20 }}>
             Salvar planos: transforma um array de planos (const planos = [...])
             em array de Plan e envia cada objeto para o server.
           </Text>
           <Button
-            title="SALVAR PLANOS"
+            style={{ alignSelf: "center", margin: 10 }}
+            success
             onPress={() => {
               planos.map(item => {
                 this.createPlanObject(item);
               });
             }}
-          />
-          <Text style={{ textAlign: "center", marginTop: 40 }}>
+          >
+            <Text>PUSH 5 PLANOS</Text>
+          </Button>
+          <Text style={{ textAlign: "center", marginTop: 20 }}>
             Atualizar lista: query todos os Plan do server, transforma em array
             de JSON, popula o state e atualiza o Flatlist.
           </Text>
           <Button
-            title="ATUALIZAR LISTA"
+            style={{ alignSelf: "center", margin: 10 }}
             onPress={() => {
               this.queryAllPlans();
             }}
-          />
+          >
+            <Text>FETCH PLANOS</Text>
+          </Button>
         </View>
 
-        <FlatList
-          data={this.state.planos_online}
-          renderItem={({ item }) => {
-            return (
-              <View style={{margin: 10, borderBottom: 1}}>
-                <View style={{ flexDirection: "row" }} >
-                  <Text>Plano: </Text>
-                  <Text>{ item.nome }</Text>
-                </View>
-                <View style={{ flexDirection: "row" }} >
-                  <Text>Operadora: </Text>
-                  <Text>{ item.operadora }</Text>
-                </View>
-              </View>
-            );
-          }}
-        />
+        <Content>
+          <List
+            dataArray={this.state.planos_online}
+            renderRow={item => (
+              <ListItem icon>
+                <Left>
+                  <Button style={{ backgroundColor: "#007AFF" }}>
+                    <Icon active name="medkit" />
+                  </Button>
+                </Left>
+                <Body>
+                  <View>
+                    <View style={{ flexDirection: "row" }}>
+                      <Text style={{fontSize: 10, fontWeight: 'bold'}}>{item.nome}</Text>
+                    </View>
+                    <View style={{ flexDirection: "row" }}>
+                      <Text>{item.operadora}</Text>
+                    </View>
+                  </View>
+                </Body>
+                <Right>
+                  <Icon active name="arrow-forward" />
+                </Right>
+              </ListItem>
+            )}
+          />
+        </Content>
       </View>
     );
   }
