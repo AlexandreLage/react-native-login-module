@@ -9,13 +9,11 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 
-import FetchDataFromParse from '@dev/FetchDataFromParse';
-
 type Props = {};
 export default class App extends Component<Props> {
   render() {
     return (
-      <FetchDataFromParse />
+      <Text style={{justifyContent: 'center', alignSelf: 'center', paddingTop: 50}}>App.js</Text>
     );
   }
 }

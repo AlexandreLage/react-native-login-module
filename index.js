@@ -4,4 +4,7 @@ import {AppRegistry} from 'react-native';
 import App from './App';
 import {name as appName} from './app.json';
 
-AppRegistry.registerComponent(appName, () => App);
+import FetchDataFromParse from '@dev/FetchDataFromParse';
+
+
+AppRegistry.registerComponent(appName, () => FetchDataFromParse);
