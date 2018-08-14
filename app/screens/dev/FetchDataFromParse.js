@@ -11,6 +11,9 @@ import {
   Left,
   Body
 } from "native-base";
+import { createStackNavigator } from "react-navigation";
+
+import PlanDetailsScreen from './PlanDetails';
 
 // In React Native applications
 import Parse from "parse/react-native";
@@ -181,7 +184,7 @@ const planos = [
   }
 ];
 
-export default class FetchDataFromParseScreen extends React.Component {
+class FetchDataFromParseScreen extends React.Component {
   constructor(props) {
     super(props);
 
@@ -288,7 +291,9 @@ export default class FetchDataFromParseScreen extends React.Component {
                 <Body>
                   <View>
                     <View style={{ flexDirection: "row" }}>
-                      <Text style={{fontSize: 10, fontWeight: 'bold'}}>{item.nome}</Text>
+                      <Text style={{ fontSize: 10, fontWeight: "bold" }}>
+                        {item.nome}
+                      </Text>
                     </View>
                     <View style={{ flexDirection: "row" }}>
                       <Text>{item.operadora}</Text>
@@ -306,3 +311,15 @@ export default class FetchDataFromParseScreen extends React.Component {
     );
   }
 }
+
+export default createStackNavigator(
+  {
+    Home: FetchDataFromParseScreen,
+    PlanDetails: PlanDetailsScreen,
+  },
+  {
+    navigationOptions: {
+      header: null
+    }
+  }
+);

@@ -10,7 +10,8 @@
     "native-base": "^2.7.2",
     "parse": "^2.0.1",
     "react": "16.4.1",
-    "react-native": "0.56.0"
+    "react-native": "0.56.0",
+    "react-navigation": "^2.11.2"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.6",
