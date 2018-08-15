@@ -185,6 +185,9 @@ const planos = [
 ];
 
 class FetchDataFromParseScreen extends React.Component {
+  static navigationOptions = {
+    header: null,
+  }
   constructor(props) {
     super(props);
 
@@ -282,11 +285,17 @@ class FetchDataFromParseScreen extends React.Component {
           <List
             dataArray={this.state.planos_online}
             renderRow={item => (
-              <ListItem icon>
+              <ListItem icon
+                onPress={() => {
+                  this.props.navigation.navigate('PlanDetails', {
+                    item
+                  });
+                }}
+              >
                 <Left>
-                  <Button style={{ backgroundColor: "#007AFF" }}>
-                    <Icon active name="medkit" />
-                  </Button>
+                  <View style={{ alignItems: 'center', backgroundColor: "#007AFF", paddingHorizontal: 6, paddingVertical: 2, borderRadius:5 }}>
+                    <Icon active name="medkit" style={{color: 'white'}} />
+                  </View>
                 </Left>
                 <Body>
                   <View>
@@ -317,9 +326,9 @@ export default createStackNavigator(
     Home: FetchDataFromParseScreen,
     PlanDetails: PlanDetailsScreen,
   },
-  {
-    navigationOptions: {
-      header: null
-    }
-  }
+    // {
+    //   navigationOptions: {
+    //     header: null
+    //   }
+    // }
 );
