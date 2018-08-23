@@ -1,6 +1,7 @@
 import React from "react";
 import { View } from "react-native";
 import { Content, Card, CardItem, Text, Body, Button } from "native-base";
+import MapView from "react-native-maps";
 
 export default class PlanDetailsScreen extends React.Component {
   static navigationOptions = {
@@ -14,13 +15,52 @@ export default class PlanDetailsScreen extends React.Component {
     }
   };
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      region: {
+        latitude: 37.78825,
+        longitude: -122.4324,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421
+      }
+    };
+  }
+
+  getInitialState() {
+    return {
+      region: {
+        latitude: 37.78825,
+        longitude: -122.4324,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421
+      }
+    };
+  }
+
+  onRegionChange(region) {
+    this.setState({ region });
+  }
+
   render() {
     const { item } = this.props.navigation.state.params;
     console.log("item", item);
 
     return (
       <View style={{ flex: 1 }}>
-        <DetailsCard plan={item} />
+        <MapView
+          style={{ flex: 1 }}
+          initialRegion={{
+            latitude: 37.78825,
+            longitude: -122.4324,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421
+          }}
+        />
+      <View style={{position: 'absolute', top: 10}}>
+          <DetailsCard plan={item} />
+        </View>
       </View>
     );
   }
@@ -65,17 +105,18 @@ const DetailsCard = props => {
             </View>
           </Body>
         </CardItem>
-        <CardItem footer bordered style={{justifyContent: 'center'}}>
+        <CardItem footer bordered style={{ justifyContent: "center" }}>
           <Button
             style={{ alignSelf: "center", padding: 20 }}
             success
-            onPress={() => {
-            }}
+            onPress={() => {}}
           >
-          <View>
-            <Text style={{ fontWeight: 'bold' }}>REDE CREDENCIADA</Text>
-            <Text style={{ fontSize: 14}}>Hospitais, Consultórios e Clínicas</Text>
-          </View>
+            <View>
+              <Text style={{ fontWeight: "bold" }}>REDE CREDENCIADA</Text>
+              <Text style={{ fontSize: 14 }}>
+                Hospitais, Consultórios e Clínicas
+              </Text>
+            </View>
           </Button>
         </CardItem>
       </Card>
