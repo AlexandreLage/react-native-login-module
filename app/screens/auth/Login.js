@@ -62,12 +62,41 @@ export default class LoginScreen extends React.Component {
                 margin: 5,
                 borderRadius: 25
               }}
+              onPress={() => alert('NavigateToHome')}
               success
             >
               <Text>ENTRAR</Text>
             </Button>
 
-            <Text style={{ alignSelf: "center", marginTop: 40 }}>
+            <View style={{ flex: 1, justifyContent: 'center' }}>
+            <Button
+              style={{
+                alignSelf: "center",
+                paddingHorizontal: 30,
+                margin: 5,
+                borderRadius: 25,
+                backgroundColor: '#2447c3'
+              }}
+              onPress={() => alert('NavigateToHome')}
+              success
+            >
+              <Text style={{color: 'white'}}>Login com Facebook</Text>
+            </Button>
+            <Button
+              style={{
+                alignSelf: "center",
+                paddingHorizontal: 30,
+                margin: 5,
+                borderRadius: 25
+              }}
+              onPress={() => alert('NavigateToHome')}
+              success
+            >
+              <Text>Login com +Google</Text>
+            </Button>
+            </View>
+
+            <Text onPress={() => alert('NavigateToRecoverPassword')} style={{ alignSelf: "center", marginTop: 40 }}>
               Recuperar senha
             </Text>
           </View>
@@ -75,6 +104,7 @@ export default class LoginScreen extends React.Component {
         <Button
           style={{ alignSelf: "stretch", justifyContent: 'center', paddingHorizontal: 30, borderRadius: 0}}
           success
+          onPress={() => alert('NavigateToCadastro')}
         >
           <Text style={{ textAlign: 'center' }}>CADASTRE-SE</Text>
         </Button>
