@@ -11,7 +11,7 @@
     "parse": "^2.0.1",
     "react": "16.4.1",
     "react-native": "0.56.0",
-    "react-native-google-signin": "^0.10.0",
+    "react-native-google-signin": "njt1982/react-native-google-signin#fix-search-paths",
     "react-native-maps": "^0.21.0",
     "react-navigation": "^2.11.2"
   },
