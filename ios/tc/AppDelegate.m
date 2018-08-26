@@ -42,4 +42,5 @@
   
   return [RNGoogleSignin application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
 }
+
 @end

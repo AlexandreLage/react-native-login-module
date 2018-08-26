@@ -22,24 +22,21 @@ export default class LoginScreen extends React.Component {
   try {
     await GoogleSignin.hasPlayServices();
     const userInfo = await GoogleSignin.signIn();
-    alert(userInfo)
+    console.log('userInfo: ', userInfo);
+
     this.setState({ userInfo });
   } catch (error) {
+    console.log('error: ', error);
+
     if (error.code === statusCodes.SIGN_IN_CANCELLED) {
       // user cancelled the login flow
-      alert(statusCodes.SIGN_IN_CANCELLED)
     } else if (error.code === statusCodes.IN_PROGRESS) {
       // operation (f.e. sign in) is in progress already
-      alert(statusCodes.IN_PROGRESS)
 
     } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
       // play services not available or outdated
-      alert(statusCodes.PLAY_SERVICES_NOT_AVAILABLE)
-
     } else {
       // some other error happened
-      alert('else')
-
     }
   }
 };

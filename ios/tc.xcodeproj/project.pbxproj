@@ -43,7 +43,7 @@
 		2DCD954D1E0B4F2C00145EB5 /* tcTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* tcTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		2F280C1094744293B2976DD5 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 530657BEF02F44C6A187EC39 /* AddressBook.framework */; };
-		38BE89C02130AEFE00294502 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 38BE89BF2130AEFE00294502 /* GoogleService-Info.plist */; };
+		38226C8B213231B600E7D60A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 38226C8A213231B600E7D60A /* GoogleService-Info.plist */; };
 		3B9945DFF3E944C799000646 /* Roboto_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9A3629C4FA24FDCBEF14C19 /* Roboto_medium.ttf */; };
 		3FACB1E203844083BA8AD53A /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6C56A04CDA084450B2EF883F /* Octicons.ttf */; };
 		4F2D3CD9BEDE4071B0E7B02D /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1AC7D752393D421281E9CB7B /* FontAwesome.ttf */; };
@@ -375,7 +375,7 @@
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		30CC9997E3CA43898E6AA9F6 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/native-base/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		34952F09FE184E668CF02D22 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/native-base/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
-		38BE89BF2130AEFE00294502 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "tc/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		38226C8A213231B600E7D60A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		530657BEF02F44C6A187EC39 /* AddressBook.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		58CA1DD451954138BE618DCF /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/native-base/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
@@ -545,8 +545,8 @@
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
-				38BE89BF2130AEFE00294502 /* GoogleService-Info.plist */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
+				38226C8A213231B600E7D60A /* GoogleService-Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
@@ -1192,7 +1192,7 @@
 				22F59FF1B0F04294BFB0CEC9 /* MaterialIcons.ttf in Resources */,
 				3FACB1E203844083BA8AD53A /* Octicons.ttf in Resources */,
 				3B9945DFF3E944C799000646 /* Roboto_medium.ttf in Resources */,
-				38BE89C02130AEFE00294502 /* GoogleService-Info.plist in Resources */,
+				38226C8B213231B600E7D60A /* GoogleService-Info.plist in Resources */,
 				09DC3FA79A054DABBFFF75DF /* Roboto.ttf in Resources */,
 				04ACCC61C19B4BD7840E811C /* rubicon-icon-font.ttf in Resources */,
 				D424E76464DB4F8B9AFFAC91 /* SimpleLineIcons.ttf in Resources */,
