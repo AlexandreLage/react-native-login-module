@@ -4,9 +4,15 @@ import { Button } from "native-base";
 
 import {
   GoogleSignin,
-  GoogleSigninButton,
+  // NOTE: We are using custom buttons for Google
+  //GoogleSigninButton,
   statusCodes
 } from "react-native-google-signin";
+
+// NOTE: We are using custom buttons for Facebook
+//import { LoginButton } from "react-native-fbsdk";
+const FBSDK = require("react-native-fbsdk");
+const { LoginManager } = FBSDK;
 
 GoogleSignin.configure({
   iosClientId:
@@ -44,7 +50,7 @@ export default class LoginScreen extends React.Component {
       function(user) {
         // user
         console.log("user: ", user);
-        alert('LoginComSucesso')
+        alert("LoginComSucesso");
       },
       function(error) {
         console.log("Error linking/creating user: " + error);
@@ -54,7 +60,27 @@ export default class LoginScreen extends React.Component {
     );
   }
 
-  signIn = async () => {
+  signInWithFacebook = () => {
+    // Attempt a login using the Facebook login dialog,
+    // asking for default permissions.
+    LoginManager.logInWithReadPermissions(["public_profile"]).then(
+      function(result) {
+        if (result.isCancelled) {
+          alert("Login was cancelled");
+        } else {
+          alert(
+            "Login was successful with permissions: " +
+              result.grantedPermissions.toString()
+          );
+        }
+      },
+      function(error) {
+        alert("Login failed with error: " + error);
+      }
+    );
+  };
+
+  signInWithGoogle = async () => {
     try {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
@@ -150,7 +176,7 @@ export default class LoginScreen extends React.Component {
                   borderRadius: 25,
                   backgroundColor: "#2447c3"
                 }}
-                onPress={() => alert("NavigateToHome")}
+                onPress={this.signInWithFacebook}
                 success
               >
                 <Text style={{ color: "white" }}>Login com Facebook</Text>
@@ -162,7 +188,7 @@ export default class LoginScreen extends React.Component {
                   margin: 5,
                   borderRadius: 25
                 }}
-                onPress={this.signIn}
+                onPress={this.signInWithGoogle}
                 success
               >
                 <Text>Login com +Google</Text>
