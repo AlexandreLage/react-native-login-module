@@ -113,7 +113,8 @@ function updateFBSDKFrameworks (next) {
     myProj.addFramework('./ios/Frameworks/FBSDKLoginKit.framework', { 'customFramework': true, 'target': target, 'link': true });
 
     // WARNING: this will overwrite any existing search paths
-    myProj.updateBuildProperty('FRAMEWORK_SEARCH_PATHS', '"$(PROJECT_DIR)/Frameworks/"');
+    // NOTE: No it won't @Xande
+    //myProj.updateBuildProperty('FRAMEWORK_SEARCH_PATHS', '"$(PROJECT_DIR)/Frameworks/"');
     fs.writeFileSync(myProjPath, myProj.writeSync());
     console.log('Finished updating ' + myProjPath);
 
