@@ -1,12 +1,26 @@
 import React from "react";
-import { ScrollView, View, TextInput, Text } from "react-native";
+import { ScrollView, View, TextInput, Text, AsyncStorage } from "react-native";
 import { Button } from "native-base";
 
-import { GoogleSignin, GoogleSigninButton, statusCodes } from "react-native-google-signin";
+import {
+  GoogleSignin,
+  GoogleSigninButton,
+  statusCodes
+} from "react-native-google-signin";
 
 GoogleSignin.configure({
-  iosClientId: "697909354633-djknpnl7a10qve1op0b4bnb2phakuv1l.apps.googleusercontent.com" // only for iOS
+  iosClientId:
+    "697909354633-djknpnl7a10qve1op0b4bnb2phakuv1l.apps.googleusercontent.com" // only for iOS
 });
+
+// In React Native applications
+import Parse from "parse/react-native";
+Parse.setAsyncStorage(AsyncStorage);
+
+Parse.initialize("N5HzTm2AikuVlrTLHwh5NnPcKDHUgcFXQJC7enzX", "unused");
+//javascriptKey is required only if you have it on server.
+
+Parse.serverURL = "http://192.168.0.7:1337/parse";
 
 export default class LoginScreen extends React.Component {
   constructor(props) {
@@ -18,28 +32,57 @@ export default class LoginScreen extends React.Component {
     };
   }
 
-  signIn = async () => {
-  try {
-    await GoogleSignin.hasPlayServices();
-    const userInfo = await GoogleSignin.signIn();
-    console.log('userInfo: ', userInfo);
+  _linkWith(type, authData) {
+    console.log("authData: ", authData);
 
-    this.setState({ userInfo });
-  } catch (error) {
-    console.log('error: ', error);
+    const options = {
+      authData: authData
+    };
 
-    if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-      // user cancelled the login flow
-    } else if (error.code === statusCodes.IN_PROGRESS) {
-      // operation (f.e. sign in) is in progress already
-
-    } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-      // play services not available or outdated
-    } else {
-      // some other error happened
-    }
+    let user = new Parse.User();
+    user._linkWith(type, options).then(
+      function(user) {
+        // user
+        console.log("user: ", user);
+        alert('LoginComSucesso')
+      },
+      function(error) {
+        console.log("Error linking/creating user: " + error);
+        alert("Error linking/creating user: " + error);
+        // TODO handle error
+      }
+    );
   }
-};
+
+  signIn = async () => {
+    try {
+      await GoogleSignin.hasPlayServices();
+      const userInfo = await GoogleSignin.signIn();
+      console.log("userInfo: ", userInfo);
+
+      let authData = {
+        id: userInfo.id,
+        id_token: userInfo.idToken,
+        access_token: userInfo.accessToken
+      };
+
+      this._linkWith("google", authData);
+
+      this.setState({ userInfo });
+    } catch (error) {
+      console.log("error: ", error);
+
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        // user cancelled the login flow
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+        // operation (f.e. sign in) is in progress already
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        // play services not available or outdated
+      } else {
+        // some other error happened
+      }
+    }
+  };
 
   render() {
     return (
@@ -132,13 +175,6 @@ export default class LoginScreen extends React.Component {
             >
               Recuperar senha
             </Text>
-
-            <GoogleSigninButton
-              style={{ width: 48, height: 48 }}
-              size={GoogleSigninButton.Size.Icon}
-              color={GoogleSigninButton.Color.Dark}
-              onPress={alert('dsasdfasdf')}
-            />
           </View>
         </ScrollView>
         <Button
